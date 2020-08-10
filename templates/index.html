@@ -1,0 +1,32 @@
+<!doctype html>
+<title>Upload new audio File</title>
+<h1>Upload new audio File</h1>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% block body %}{% endblock %}
+<form method=post enctype=multipart/form-data>
+    <input type=file name=file>
+    <h3>Name(s) or alias(es) of the person/people speaking: </h3>
+    <input type=text name=alias>
+    <h3>Description</h3>
+    <textarea name=description rows=10 cols=50></textarea>
+    <h3>Authenticity</h3>
+    <select name=authenticity>
+        <option>High</option>
+        <option selected>Unclear</option>
+        <option>Low</option>
+    </select>
+    <h3>Title/Category/Project name</h3>
+    <p>Doesn't have to be unique. Just pick one or more keywords you can remember when searching for it later.</p>
+    <input type=text name=title>
+    <h3>All done?</h3>
+    <p>Submit data</p>
+    <input type=submit value=Upload>
+</form>
